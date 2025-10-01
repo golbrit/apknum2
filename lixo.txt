@@ -1,0 +1,14 @@
+switch (navegacao) {
+        case 'home':
+          <Home navegar={navegar}></Home>
+          break;
+        case 'receitas'
+          <Receitas navegar={navegar}></Receitas>
+          break;
+      
+        default:
+            <Text>
+              Pagina não encontrada!!
+              Error 404
+            </Text>
+          break;
