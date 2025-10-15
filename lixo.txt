@@ -12,3 +12,49 @@ switch (navegacao) {
               Error 404
             </Text>
           break;
+
+
+
+switch (navegacao) {
+        case 'home':
+          return <Home navegar={navegar}></Home>
+          
+        case 'receitas':
+          return <Receitas navegar={navegar}></Receitas>
+
+      
+        default:
+            <Text>
+              Pagina não encontrada!!
+              Error 404
+            </Text>
+          break;
+      }
+  }
+
+
+  import { StyleSheet, Text, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import Home from './telas/Home';
+import Receitas from './telas/Receitas';
+
+  const Stack= createNativeStackNavigator();
+
+  export default function App() {
+
+  
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Home'>
+        <Stack.Screen name="Home" component={Home} options={{title: 'Incio'}}></Stack.Screen>
+      </Stack.Navigator>
+
+      <Stack.Navigator initialRouteName='Receitas'>
+        <Stack.Screen name="Receitas" component={Receitas} options={{title: 'Fim'}}></Stack.Screen>
+      </Stack.Navigator>
+      
+    </NavigationContainer>
+    
+);
+}

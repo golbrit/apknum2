@@ -1,46 +1,20 @@
 import { StyleSheet, Text, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 import Home from './telas/Home';
 import Receitas from './telas/Receitas';
-import { useState } from 'react';
 
+  const Stack= createNativeStackNavigator();
 
-export default function App() {
-const[navegacao, steNavegacao] = useState('home');
-const navegar= (tela)=>{
-  steNavegacao(tela);
-}
+  export default function App() {
 
-  const renderizacao = ()=>{
-    switch (navegacao) {
-      case 'home':
-        return <Home navegar={navegar}></Home>
-        
-      case 'receitas':
-        return <Receitas navegar={navegar}></Receitas>
-
-    
-      default:
-          <Text>
-            Pagina não encontrada!!
-            Error 404
-          </Text>
-        break;
-    }
-}
-
-  return (
-    <View style={styles.container}>
-      {renderizacao()}
-    </View>
-    
-);
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#333',
-    alignItems: 'center',
-    justifyContent: 'center',
+  
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='Home'>
+          <Stack.Screen name="Home" component={Home} options={{title: 'Início'}}></Stack.Screen>   
+          <Stack.Screen name="Receitas" component={Receitas} options={{title: 'Receitas'}}></Stack.Screen>   
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
   }
-});
